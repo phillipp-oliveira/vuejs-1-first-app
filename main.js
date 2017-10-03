@@ -13,23 +13,22 @@ const app = new Vue({
     }
   },
   computed: {
-    johnFullName(){
-      return `${this.john.first} ${this.john.last}`
+  },
+  filters: {
+    fullName(obj){
+      return `${obj.first } ${obj.last}`
     },
-    janeFullName(){
-      return `${this.jane.first} ${this.jane.last}`
-    },
-    johnAgeInOneYear(){
-      return this.john.age + 1;
+    ageInOneYear(obj){
+      return obj.age + 1;
     }
   },
   template: `
     <div>
-      <h1>first: {{johnFullName}}</h1>
-      <h2>Age: {{johnAgeInOneYear}}</h2>
+      <h1>first: {{john | fullName}}</h1>
+      <h2>Age: {{john | ageInOneYear}}</h2>
       <hr>
-      <h1>first: {{janeFullName}}</h1>
-      <h2>Age: {{jane.age}}</h2>
+      <h1>first: {{jane | fullName}}</h1>
+      <h2>Age: {{jane | ageInOneYear}}</h2>
     </div>
   `
 })
