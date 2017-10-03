@@ -2,21 +2,34 @@ const app = new Vue({
   el: "#app",
   data: {
     john: {
-      name: "Jhon",
-      age: 26,  
+      first: "Jhon",
+      last: "Doe",
+      age: 28,  
     },
-    doe: {
-      name: "Doe",
-      age: 31,
+    jane: {
+      first: "Jane",
+      last: "Doe",
+      age: 21,
     }
-  }, 
+  },
+  computed: {
+    johnFullName(){
+      return `${this.john.first} ${this.john.last}`
+    },
+    janeFullName(){
+      return `${this.jane.first} ${this.jane.last}`
+    },
+    johnAgeInOneYear(){
+      return this.john.age + 1;
+    }
+  },
   template: `
     <div>
-      <h1>Name: {{john.name}}</h1>
-      <h2>Age: {{john.age}}</h2>
+      <h1>first: {{johnFullName}}</h1>
+      <h2>Age: {{johnAgeInOneYear}}</h2>
       <hr>
-      <h1>Name: {{doe.name}}</h1>
-      <h2>Age: {{doe.age}}</h2>
+      <h1>first: {{janeFullName}}</h1>
+      <h2>Age: {{jane.age}}</h2>
     </div>
   `
 })
